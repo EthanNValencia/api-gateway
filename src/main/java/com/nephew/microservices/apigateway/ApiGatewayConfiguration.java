@@ -11,7 +11,7 @@ public class ApiGatewayConfiguration {
 	@Bean
 	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 		/*
-		 * This function will redirect /get url to the provided uri. In the filter I am
+		 * This first route will redirect /get url to the provided uri. In the filter I am
 		 * adding a custom header. This header will be available in the response. In the
 		 * filter I am adding a custom parameter.
 		 * 
@@ -20,6 +20,7 @@ public class ApiGatewayConfiguration {
 		 */
 		return builder.routes()
 				.route(p -> p.path("/get")
+				// The below filter adds a custom header and a custom parameter to the /get path. 
 				.filters(f -> f.addRequestHeader("MyHeader", "MyURI").addRequestParameter("MyParam", "MyValue"))
 				.uri("http://httpbin.org:80"))
 				.route(p -> p.path("/currency-exchange/**")
@@ -36,4 +37,8 @@ public class ApiGatewayConfiguration {
 				.uri("lb://currency-conversion"))
 				.build();
 	}
-}// http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+	
+}
+
+// test url
+// http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
