@@ -40,5 +40,7 @@ public class ApiGatewayConfiguration {
 	
 }
 
-// test url
+// test urls
 // http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+// http://localhost:8765/currency-exchange/from/USD/to/INR
+// http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/10
